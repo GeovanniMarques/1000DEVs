@@ -127,3 +127,22 @@ Para produzir 126 sanduiches serão necessários:
 6,300kg de presunto
 15,120kg de hamburguer
 ```
+
+### 8. [Verificação de status de aluno (aprovação, recuperação ou reprovação)](src/CondicionalMediaNotas.javaotas)
+```terminal
+¬¬¬¬¬¬¬¬¬¬ DIÁRIO DE MATÉRIAS ¬¬¬¬¬¬¬¬¬¬
+
+Por gentileza, abaixo informe as notas referentes as provas do aluno, entre 0 e 10,
+a quantidade de aulas ministradas e as faltas do aluno.
+
+Informe a 1ª nota do aluno: 10
+Informe a 2ª nota do aluno: 9,6
+Informe a 3ª nota do aluno: 8,2
+Informe a 4ª nota do aluno: 7,75
+Informe a quantidade de aulas ministradas: 45
+Informe a quantidade faltas do aluno: 9
+
+Média final: 8,9 - Aluno aprovado.
+```
+
+<!-- ### 9.  -->

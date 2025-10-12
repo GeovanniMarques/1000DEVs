@@ -6,7 +6,7 @@ public class CondicionalMediaNotas {
 
         try (Scanner scanner = new Scanner(System.in)) {
             System.out.println(
-                    "¬¬¬¬¬¬¬¬¬¬ DIÁRIO DE MATÉRIAS ¬¬¬¬¬¬¬¬¬¬\n\nPor gentileza, abaixo informe as notas referentes as provas do aluno, entre 0 e 10, a quantidade de aulas ministradas e as faltas do aluno.\n");
+                    "¬¬¬¬¬¬¬¬¬¬ DIÁRIO DE MATÉRIAS ¬¬¬¬¬¬¬¬¬¬\n\nPor gentileza, abaixo informe as notas referentes as provas do aluno, entre 0 e 10,\na quantidade de aulas ministradas e as faltas do aluno.\n");
 
             System.out.print("Informe a 1ª nota do aluno: ");
             float nota1 = scanner.nextFloat();
@@ -34,12 +34,12 @@ public class CondicionalMediaNotas {
             } 
             
             if ((aulas < 0) || (faltas < 0)) {
-                System.err.println("ERRO: informe valores positivos para aulas/faltas.");
+                System.err.println("\nERRO: informe valores positivos para aulas/faltas.");
                 return;
             } 
             
             if (aulas == 0) {
-                System.err.println("ERRO: a quantidade de aulas ministradas não pode ser zero (0).");
+                System.err.println("\nERRO: a quantidade de aulas ministradas não pode ser zero (0).");
                 return;
             }
 
@@ -47,18 +47,18 @@ public class CondicionalMediaNotas {
             float percentualFaltas = ((float)faltas * 100.0f) / aulas;
 
             if (percentualFaltas > 25) {
-                System.out.printf("Percentual de faltas: %.1f%% - Aluno reprovado por faltas", percentualFaltas);
+                System.out.printf("\nPercentual de faltas: %.1f%% - Aluno reprovado por faltas", percentualFaltas);
             } else if (media >= 6) {
-                System.out.printf("Média final: %.1f - Aluno aprovado.", media);
+                System.out.printf("\nMédia final: %.1f - Aluno aprovado.", media);
             } else if (media >= 3 && media < 6) {
-                System.out.printf("Média final: %.1f - Aluno em recuperação.", media);
+                System.out.printf("\nMédia final: %.1f - Aluno em recuperação.", media);
             } else {
-                System.out.printf("Média final: %.1f - Aluno reprovado.", media);
+                System.out.printf("\nMédia final: %.1f - Aluno reprovado.", media);
             }
         } catch (InputMismatchException e) {
-            System.err.println("ERRO: informe uma entrada válida (números).");
+            System.err.println("\nERRO: informe uma entrada válida (números).");
         } catch (Exception e) {
-            System.err.println("Ocorreu um erro desconhecido, tente novamente.");
+            System.err.println("\nOcorreu um erro desconhecido, tente novamente.");
             // e.PrintStackTrace();
         }
 
