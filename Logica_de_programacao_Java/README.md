@@ -34,7 +34,7 @@
     - Recuperação. MediaNotas >= 3 e < 6;
     - Reprovado por Nota. MediaNotas < 3;
 
-9. Você deve desenvolver um pequeno programa em Java que ajude estudantes a calcular a média de duas notas de uma disciplina. O programa deve:
+<!-- 9. Você deve desenvolver um pequeno programa em Java que ajude estudantes a calcular a média de duas notas de uma disciplina. O programa deve:
     - Solicitar ao usuário que digite duas notas (valores decimais) de 0 a 10.
     - Realizar o cálculo da média aritmética dessas notas.
     - Exibir a média calculada com duas casas decimais.
@@ -45,6 +45,71 @@
     Regras adicionais:
     - Caso o usuário insira um valor inválido (como texto não numérico), exiba uma mensagem amigável informando o erro e peça que ele execute o programa novamente.
     - Não é necessário validar se a nota está entre 0 e 10 neste exercício (apenas o tipo do dado)
+-->
+
+9. Faça um programa para a leitura de duas notas parciais de um aluno. O programa deve calcular a média alcançada por aluno e apresentar:
+    - A mensagem "Aprovado", se a média alcançada for maior ou igual a sete;
+    - A mensagem "Reprovado", se a média for menor do que sete;
+    - A mensagem "Aprovado com Distinção", se a média for igual a dez.
+
+10. Um posto está vendendo combustíveis com a seguinte tabela de descontos:
+
+    Álcool:
+    - até 20 litros, desconto de 3% por litro
+    - acima de 20 litros, desconto de 5% por litro
+
+    Gasolina:
+    - até 20 litros, desconto de 4% por litro
+    - acima de 20 litros, desconto de 6% por litro
+
+    Escreva um algoritmo que leia o número de litros vendidos, o tipo de combustível como um número inteiro (codificado da seguinte forma: 1 - álcool, 2 - gasolina), calcule e imprima o valor a ser pago pelo cliente sabendo-se que o preço do litro da gasolina é R$ 5,50 e o preço do litro do álcool é R$ 3,90.
+
+11. Uma loja de venda de frutas está vendendo frutas com a seguinte tabela de preços:
+
+    - Até 5 Kg: Morango R$ 2,50 por Kg e Maçã R$ 1,80 por Kg
+    - Acima de 5 Kg: Morango R$ 2,20 por Kg e Maçã R$ 1,50 por Kg
+
+    Se o cliente comprar mais de 8 Kg em frutas ou o valor total da compra ultrapassar R$ 25,00, receberá ainda um desconto de 10% sobre este total. Escreva um algoritmo para ler a quantidade (em Kg) de morangos e a quantidade (em Kg) de maças adquiridas e escreva o valor a ser pago pelo cliente.
+
+12. Um empresa resolveu dar um aumento de salário aos seus colaboradores e lhe contraram para desenvolver o programa que calcularáos reajustes. Faça um programa que recebe o salário de um colaborador e faça o reajuste segundo o seguinte critério, baseado no salário atual:
+
+    - salários até R$ 280,00 (incluindo) : aumento de 20%
+    - salários entre R$ 280,00 e R$ 700,00: aumento de 15%
+    - salários entre R$ 700,00 e R$ 1500,00: aumento de 10%
+    - salários de R$ 1500,00 em diante: aumento de 5%
+
+    Após o aumento ser realizado, informe na tela:
+    - o salário antes do reajuste;
+    - o percentual de aumento aplicado;
+    - o valor do aumento;
+    - o novo salário, após o aumento.
+
+13. Faça um programa para o cálculo de uma folha de pagamento, sabendo que os descontos são do Imposto de Renda, que depende do salário bruto (conforme tabela abaixo) e 3% para o Sindicato e que o FGTS corresponde a 11% do Salário Bruto, mas não é descontado (é a empresa que deposita). O Salário Líquido corresponde ao Salário Bruto menos os descontos. O programa deverá pedir ao usuário o valor da sua hora e a quantidade de horas trabalhadas no mês.
+
+    Desconto do IR:
+    - Salário Bruto até 900 (inclusive) - isento
+    - Salário Bruto até 1500 (inclusive) - desconto de 5%
+    - Salário Bruto até 2500 (inclusive) - desconto de 10%
+    - Salário Bruto acima de 2500 - desconto de 20%
+
+    Imprima na tela as informações, dispostas conforme o exemplo abaixo.
+
+    QTDE de Horas Trabalhadas: 5
+    Valor da hora trabalhada R$: 220.00
+
+    Salário Bruto: (5 * 220)        : R$ 1.100,00
+
+    (-) IR (5%)                     : R$       55,00 
+
+    (-) INSS ( 10%)                 : R$     110,00
+
+    (-) Sindicato (3%)              : R$        33,00
+
+    FGTS (11%)                      : R$     121,00
+
+    Total de descontos              : R$     198,00
+
+    Salário Liquido                 : R$     902,00
 
 ## Resolução dos exercícios
 > ⚠️ Para visualizar o código fonte dos exercícios, basta clicar no título referente ao desejado verificar ou navegar até a superior deste repositório.
@@ -146,3 +211,60 @@ Média final: 8,9 - Aluno aprovado.
 ```
 
 <!-- ### 9.  -->
+
+### 9. [Estrutura de condicional - Aprovação de aluno](src/CondicionalAprovacao.java)
+```terminal
+Informe a 1ª nota do aluno: 10
+Informe a 2ª nota do aluno: 10
+
+Média: 10,0 - Aluno aprovado com distinção
+```
+
+### 10. [Estrutura de condicional - Abastecimento de veículo](src/CondicionalAbastecimento.java)
+```terminal
+Informe a quantidade de litros abastecida: 38,7
+Informe o combustível utilizado no abastecimento:
+[1] - Álcool | [2] - Gasolina: 2
+
+Valor total: R$200,08
+```
+
+### 11. [Estrutural de condicional - Compras em hortifrúti](src/CondicionalHortiFruti.java)
+```terminal
+Informe o peso total comprado de morangos: 4
+Informe o peso total comprado de maça: 6
+
+Valor total a ser pago: R$17,10
+```
+
+### 12. [Estrtura de condicional - Reajuste salarial de funcionário](src/CondicionalReajuste.java)
+```termimal
+Informe o salário do funcionário: R$1518
+
+Salário atual: R$1518,00
+Percentual de aumento aplicado: 0,05%
+Valor de aumento: R$75,90
+Salário reajustado: R$1593,90
+```
+
+### 13. [Cálculo de descontos e geração de contracheque](src/CondicionalDesconto.java)
+```terminal
+Por gentileza, informe a quantidade de horas trabalhadas neste mês: 144
+Agora, informe o valor de cada hora trabalhada: 15,18
+
+Quantidade de horas trabalhadas: 144,00
+Valor da hora trabalhada: R$15,18
+
++-------------------------------------+-------------------------+
+| Informações                         |                 Valores |
++-------------------------------------+-------------------------+
+| Salário bruto (144.0 * 15.18)       : R$              2185,92 |
+| (-) IR (10.0%)                      : R$               218,59 |
+| (-) INSS (9.0%)                     : R$               196,73 |
+| (-) Sindicato (3.0%)                : R$                65,58 |
+| FGTS (11%)                          : R$               240,45 |
+| Total de descontos                  : R$               480,90 |
++-------------------------------------+-------------------------+
+| Salário líquido                     : R$              1705,02 |
++-------------------------------------+-------------------------+
+```
