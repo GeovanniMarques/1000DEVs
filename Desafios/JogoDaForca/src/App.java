@@ -23,7 +23,7 @@ public class App {
         String linha; // recebe cada linha do arquivo
         int palavra_selecionada;
 
-        // Realiza limpeza de terminar a cada inicialização do programas
+        // Realiza limpeza de terminal a cada inicialização do programa
         limparTela();
 
         try (Scanner scanner = new Scanner(arquivo)) {
