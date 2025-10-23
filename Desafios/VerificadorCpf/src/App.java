@@ -10,12 +10,11 @@ public class App {
         // Realiza limpeza de terminal a cada inicialização do programa
         limparTela();
 
-        Scanner scanner = new Scanner(System.in);
-    
-        // Entrada de dados
+        try (Scanner scanner = new Scanner(System.in)) {
+            // Entrada de dados
         System.out.println("+-------------------- VERIFICADOR DE CPF --------------------+\n");
         System.out.print("Por gentileza, informe o CPF para verificação: ");
-        String cpf = scanner.nextLine();
+        String cpf = scanner.nextLine().replaceAll("[.-]", "");
         
         //Processamento
 
@@ -46,8 +45,9 @@ public class App {
             verificador = 11 - resto;
         }
 
+        // Comparação de cálculo com 1º dígito verificador
         if (dv1 != verificador) {
-            System.out.println("\nCPF inválido");
+            System.out.printf("\nCPF (%s) inválido!", cpf);
             return;
         }
 
@@ -62,19 +62,26 @@ public class App {
             verificador = 11 - resto;
         }
 
+        // Comparação de cálculo com 2º dígito verificador
         if (dv2 != verificador) {
-            System.out.println("\nCPF inválido");
+            System.out.printf("\nCPF (%s) inválido!", cpf);
             return;
         }
         
+        // Saída
         System.out.printf("\nCPF informado (%s) é válido.", cpf);
-        System.out.printf("\nDígito verificador 1: %d\nDígito verificador 2: %d", dv1, dv2);
+        System.out.printf("\n\n1º dígito verificador: %d\n2º dígito verificador 2: %d", dv1, dv2);
+        } catch (Exception e) {
+            System.err.println("Ocorreu um erro inesperado.");
+        }
+        
     }
 
+    // Método para limpeza de terminal
     public static void limparTela() {
         try {
             String os = System.getProperty("os.name");
-    
+
             if (os.contains("Windows")) {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             } else {
