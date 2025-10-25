@@ -12,65 +12,65 @@ public class App {
 
         try (Scanner scanner = new Scanner(System.in)) {
             // Entrada de dados
-        System.out.println("+-------------------- VERIFICADOR DE CPF --------------------+\n");
-        System.out.print("Por gentileza, informe o CPF para verificação: ");
-        String cpf = scanner.nextLine().replaceAll("[.-]", "");
-        
-        //Processamento
+            System.out.println("+-------------------- VERIFICADOR DE CPF --------------------+\n");
+            System.out.print("Por gentileza, informe o CPF para verificação: ");
+            String cpf = scanner.nextLine().replaceAll("[.-]", "");
 
-        //Conversão de String para int
-        for (int i = 0; i < 11; i++) {
-            digitos[i] = cpf.charAt(i) - 48;
+            // Processamento
 
-            if(i < 9) {
+            // Conversão de String para int
+            for (int i = 0; i < 11; i++) {
+                digitos[i] = cpf.charAt(i) - 48;
+
+                if (i < 9) {
+                    soma += (digitos[i] * multiplicador);
+                    multiplicador--;
+                }
+            }
+
+            resto = soma % 11;
+
+            if (resto < 2) {
+                verificador = 0;
+            } else {
+                verificador = 11 - resto;
+            }
+
+            // Comparação de cálculo com 1º dígito verificador
+            if (digitos[9] != verificador) {
+                System.out.printf("\nCPF (%s) inválido!", cpf);
+                return;
+            }
+
+            // Cálculo para validação do 2ª dígito verificador
+            multiplicador = 11;
+
+            for (int i = 0; i < 10; i++) {
                 soma += (digitos[i] * multiplicador);
                 multiplicador--;
             }
-        }
 
-        resto = soma % 11;
+            resto = soma % 11;
 
-        if (resto < 2) {
-            verificador = 0;
-        } else {
-            verificador = 11 - resto;
-        }
+            if (resto < 2) {
+                verificador = 0;
+            } else {
+                verificador = 11 - resto;
+            }
 
-        // Comparação de cálculo com 1º dígito verificador
-        if (digitos[9] != verificador) {
-            System.out.printf("\nCPF (%s) inválido!", cpf);
-            return;
-        }
+            // Comparação de cálculo com 2º dígito verificador
+            if (digitos[10] != verificador) {
+                System.out.printf("\nCPF (%s) inválido!", cpf);
+                return;
+            }
 
-        //Cálculo para validação do 2ª dígito verificador
-        multiplicador = 11;
-        
-        for (int i = 0; i < 10; i++) {
-            soma += (digitos[i] * multiplicador);
-            multiplicador--;
-        }
-
-        resto = soma % 11;
-
-        if (resto < 2) {
-            verificador = 0;
-        } else {
-            verificador = 11 - resto;
-        }
-
-        // Comparação de cálculo com 2º dígito verificador
-        if (digitos[10] != verificador) {
-            System.out.printf("\nCPF (%s) inválido!", cpf);
-            return;
-        }
-        
-        // Saída
-        System.out.printf("\nCPF informado (%s) é válido.", cpf);
-        System.out.printf("\n\n1º dígito verificador: %d\n2º dígito verificador: %d", digitos[9], digitos[10]);
+            // Saída
+            System.out.printf("\nCPF informado (%s) é válido.", cpf);
+            System.out.printf("\n\n1º dígito verificador: %d\n2º dígito verificador: %d", digitos[9], digitos[10]);
         } catch (Exception e) {
             System.err.println("Ocorreu um erro inesperado.");
         }
-        
+
     }
 
     // Método para limpeza de terminal

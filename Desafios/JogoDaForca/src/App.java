@@ -13,10 +13,10 @@ public class App {
         ArrayList<String> palavras = new ArrayList<>();
 
         // Armazena letras inseridas pelo usuário
-        ArrayList<String> letras_inseridas = new ArrayList<>();
+        ArrayList<Character> letras_inseridas = new ArrayList<>();
 
         // Objeto para leitura de arquivo
-        File arquivo = new File("palavras.txt");
+        File arquivo = new File("./palavras.txt");
 
         // Objeto para escolha aleatória de palavra (recebendo o tamanho da lista
         // palavras como parâmetro)
@@ -24,7 +24,8 @@ public class App {
 
         // Declaração de variáveis
         String linha_arquivo; // Recebe cada linha do arquivo
-        String palavra_selecionada; // Recebe a palavra selecionada para o jogo
+        char palpite; // Recebe o palpite do usuário
+        char[] palavra_selecionada; // Recebe a palavra selecionada para o jogo
         boolean erro = false; // Verificação de erro em palpite do usuário
         int numero_palavra; // Variável que recebe o número aleatório gerado para escolha de palavra
         int vidas = 6; // Contador de vidas disponíveis no jogo
@@ -48,7 +49,7 @@ public class App {
         try (Scanner teclado = new Scanner(System.in)) {
             // Escolha aleatória de palavra para jogo
             numero_palavra = gerador.nextInt(0, palavras.size() - 1);
-            palavra_selecionada = palavras.get(numero_palavra);
+            palavra_selecionada = palavras.get(numero_palavra).toCharArray();
 
             // Looping para permissão de palpite enquanto houver vidas disponíveis
             while (vidas > 0) {
@@ -58,52 +59,118 @@ public class App {
                 // Exibição de informações referentes ao jogo
                 System.out.printf("Vidas restantes: %d", vidas);
                 System.out.print("\nLetras inseridas: ");
-                for (String letra : letras_inseridas) {
+                for (char letra : letras_inseridas) {
                     System.out.print(letra);
                 }
 
-                System.out.println("\n");
-                System.out.println("  +---+");
-                System.out.println("  |   |");
-                System.out.println("  O   |");
-                System.out.println(" /|\\  |");
-                System.out.println(" / \\  |");
-                System.out.println("      |");
-                System.out.println("  =========");
+                switch (vidas) {
+                    case 6:
+                        System.out.println("\n");
+                        System.out.println("  +---+");
+                        System.out.println("  |   |");
+                        System.out.println("      |");
+                        System.out.println("      |");
+                        System.out.println("      |");
+                        System.out.println("      |");
+                        System.out.println("  =========");
+                        break;
+                    case 5:
+                        System.out.println("\n");
+                        System.out.println("  +---+");
+                        System.out.println("  |   |");
+                        System.out.println("  O   |");
+                        System.out.println("      |");
+                        System.out.println("      |");
+                        System.out.println("      |");
+                        System.out.println("  =========");
+                        break;
+                    case 4:
+                        System.out.println("\n");
+                        System.out.println("  +---+");
+                        System.out.println("  |   |");
+                        System.out.println("  O   |");
+                        System.out.println("  |   |");
+                        System.out.println("      |");
+                        System.out.println("      |");
+                        System.out.println("  =========");
+                        break;
+                    case 3:
+                        System.out.println("\n");
+                        System.out.println("  +---+");
+                        System.out.println("  |   |");
+                        System.out.println("  O   |");
+                        System.out.println(" /|   |");
+                        System.out.println("      |");
+                        System.out.println("      |");
+                        System.out.println("  =========");
+                        break;
+                    case 2:
+                        System.out.println("\n");
+                        System.out.println("  +---+");
+                        System.out.println("  |   |");
+                        System.out.println("  O   |");
+                        System.out.println(" /|\\  |");
+                        System.out.println("      |");
+                        System.out.println("      |");
+                        System.out.println("  =========");
+                        break;
+                    case 1:
+                        System.out.println("\n");
+                        System.out.println("  +---+");
+                        System.out.println("  |   |");
+                        System.out.println("  O   |");
+                        System.out.println(" /|\\  |");
+                        System.out.println(" /    |");
+                        System.out.println("      |");
+                        System.out.println("  =========");
+                        break;
+                }
 
-                // System.out.println("exibir" * palavra_selecionada.length());
-                if(erro) {
-                    System.out.println("ERRO: insira somente uma letra em seu palpite.");
+                for (char letra : palavra_selecionada) {
+                    if (letra == palpite) {
+                        System.out.printf("_%s_ ", letra);
+                    } else {
+                        System.out.print("___ ");
+                    }
+                }
+
+                if (erro) {
+                    System.out.println("\n\nERRO: insira somente uma letra em seu palpite.");
                 }
 
                 // Entrada de palpite de usuário
-                System.out.print("Digite uma letra: ");
-                String palpite = teclado.nextLine();
+                System.out.print("\n\nDigite uma letra: ");
+                palpite = teclado.next().charAt(0);
 
                 // Ideal verificar se é um número
-                if(palpite.length() == 1) {
+                if (palpite == 1) {
                     erro = false;
 
                     while (letras_inseridas.contains(palpite)) {
                         System.out.print("Letra já inserida, digite outra: ");
-                        palpite = teclado.nextLine();
+                        palpite = teclado.next().charAt(0);
                     }
-    
-                    if (palavra_selecionada.contains(palpite)) {
-                        letras_inseridas.add(palpite);
-                    } else {
-                        letras_inseridas.add(palpite);
-                        vidas--;
+
+                    for (char letra : palavra_selecionada) {
+                        int contador = 0;
+                        if (letra == palpite) {
+                            contador++;
+                        } else {
+                            contador++;
+                        }
                     }
+
+                    vidas--;
+                    letras_inseridas.add(palpite);
                 } else {
                     erro = true;
                 }
             }
 
-            // Realiza limpeza de terminal ao final de vidas disponíveis
-            limparTela();
-
             if (vidas == 0) {
+                // Realiza limpeza de terminal ao final de vidas disponíveis
+                limparTela();
+
                 // Exibição de informações referentes ao jogo
                 System.out.printf("Você perdeu! A palavra secreta era: %s\n\n", palavra_selecionada);
                 System.out.println("  +---+");
